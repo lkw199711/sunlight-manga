@@ -29,3 +29,13 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount("#app");
+
+// 页面title修改
+router.beforeEach((to, from, next) => {
+  // 路由发生变化修改页面title
+  if (to.meta.title) {
+    document.title = to.meta.title || '阳光漫画';
+    document.documentElement.setAttribute('lang', 'zh');
+  }
+  next()
+})
