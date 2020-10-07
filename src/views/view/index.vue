@@ -1,6 +1,14 @@
 <template>
     <div class="view">
-        <img v-for="(k, i) in arr" :src="k" :key="i" alt="接收图片"/>
+        <van-list
+                v-model="loading"
+                :finished="finished"
+                @load="load_img"
+                :immediate-check="false"
+        >
+            <img v-for="(k, i) in imgFileList" :src="k" :key="i" alt="接收图片"/>
+        </van-list>
+
         <div class="btns">
             <button class="before" @click="before">上一章</button>
             <button class="next" @click="next">下一章</button>
@@ -15,34 +23,71 @@
         name: "index",
         data() {
             return {
+                // 漫画名
                 manga: '',
+                // 章节名
                 chater: '',
-                src: "111",
-                fileArr: [],
-                arr: [],
+                // 章节列表
                 menu: [],
+                // 章节的坐标索引
                 index: 0,
-                length: 0,
-                flag: false
+
+                // 图片文件列表
+                imgFileList: [],
+                // 图片路径列表
+                imgPathList: [],
+                // 当前图片页码
+                page: -1,
+                // 初始加载页码数量
+                initPage: 3,
+                // 是否正在加载图片
+                loading: false,
+                // 是否加载完全部图片
+                finished: false,
             };
         },
         methods: {
-            async get_file(manga, chater, index) {
-                let blob;
-                // 使用axios请求上传接口
-                await get_img({
-                    params: {file: `${manga}/${chater}/${index}`}
-                }).then(res => {
-                    blob = res.data;
-                    blob = URL.createObjectURL(blob);
-                });
+            /**
+             * 加载图片
+             */
+            load_img() {
+                const manga = this.manga;
+                const chater = this.chater;
+                const list = this.imgPathList;
+                const initPage = this.initPage - 1;
 
-                return blob;
+                // 页码递增
+                const page = ++this.page;
+
+                // 使用axios请求上传接口
+                get_img({
+                    params: {file: `${manga}/${chater}/${list[page]}`}
+                }).then(res => {
+                    // 获取图片数据,转变为blob链接
+                    const blob = URL.createObjectURL(res.data);
+                    // 加入数组
+                    this.imgFileList.push(blob);
+                    // 加载结束,更新状态
+                    this.loading = false;
+                    // 是否加载完全部
+                    this.finished = this.page === this.imgPathList.length - 1;
+                    // 是否完成页面初始化加载,未完成则再次加载图片
+                    page < initPage && this.load_img();
+                });
             },
-            async get_chater_length(manga, chater) {
-                let arr
-                await ajax
-                    .post("php/manga.php", {manga: manga + "/" + chater})
+
+            /**
+             * 重载页面
+             */
+            reload_page() {
+                // 重置图片数据
+                this.imgFileList.length = 0;
+
+                // 获取漫画名与章节
+                const manga = this.manga;
+                const chater = this.chater;
+
+                ajax.post("php/manga.php", {manga: manga + "/" + chater})
                     .then(r => {
                         const data = r.data;
                         this.length = data.length;
@@ -53,10 +98,14 @@
                             return valueA - valueB;
                         });
 
-                        this.fileArr = arr;
+                        this.imgPathList = arr;
+
+                        this.load_img();
                     });
-                return arr;
             },
+            /**
+             * 上一页
+             * */
             before() {
                 if (this.index == 0) {
                     alert('已经到了第一章');
@@ -74,7 +123,9 @@
                 this.reload_page(manga, chater);
 
             },
-
+            /**
+             * 下一页
+             * */
             next() {
                 if (this.index == this.menu.length) {
                     alert('已经到了最后一章');
@@ -93,18 +144,6 @@
 
             },
 
-            reload_page(manga, chater) {
-                this.arr.length = 0;
-
-                this.get_chater_length(manga, chater).then(arr => {
-                    for (let i = 0, l = arr.length; i < l; i++) {
-                        this.get_file(manga, chater, arr[i]).then(blob => {
-                            this.$set(this.arr,i,blob);
-                            // this.arr[i] = blob;
-                        });
-                    }
-                })
-            },
             /**
              * 获取名称与章节
              * 通过缓存的方式记录现在的章节与漫画名称
@@ -133,8 +172,6 @@
 
 
             this.reload_page(manga, chater);
-
-            window.arr = this.arr;
         }
     };
 </script>
