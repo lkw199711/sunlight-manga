@@ -1,4 +1,4 @@
-import ajax from "../../../api/serve/ajax";
+import { ajax } from "@/serve";
 
 export default {
     // 数据

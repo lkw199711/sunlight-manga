@@ -1,11 +1,11 @@
-const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
+
 module.exports = {
     lintOnSave: false,
     // 开发环境代理
     devServer: {
         open: true,
-        openPage: '#/about',
+        // openPage: '#/about',
         hot: true,
         // prox: 8000,
         // host: '0.0.0.0',
@@ -25,7 +25,7 @@ module.exports = {
             postcss: {
                 plugins: [
                     // 各浏览器前缀
-                    autoprefixer(),
+                    // autoprefixer(),
                     // px单位转换
                     pxtorem({
                         'postcss-import': {},

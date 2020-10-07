@@ -1,6 +1,5 @@
 import Axios from "axios";
 import Qs from "qs";
-import get_key_word from "./key-word";
 import md5 from "js-md5";
 
 // 接口路径的设置
@@ -39,7 +38,7 @@ const ajax = Axios.create({
  * @type {AxiosInstance}
  */
 const get_img = Axios.create({
-    baseURL: baseUrl,
+    baseURL: url + "php/get-img-file.php",
     timeout: 5 * 1000,
     method: "post",
     responseType: "blob", // 设置接收格式为blob格式
@@ -70,12 +69,13 @@ const get_img = Axios.create({
 export default function get_key_word(time) {
     // 密钥文本使用数组拆分
     const keyArr = ['s', 'u', 'n', 'l', 'i', 'g', 'h', 't'];
+    const tailArr = ['-', 'm', 'a', 'n', 'g', 'a'];
 
     // 合并密钥文本与时间戳,使用md5加密
-    const keyWord = md5(time + keyArr.join());
+    const keyWord = md5(time + keyArr.join('') + tailArr.join(''));
 
     // 返回密钥
     return keyWord;
 }
 
-export { ajax,get_img };
+export { ajax, get_img };

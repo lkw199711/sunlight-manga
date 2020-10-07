@@ -15,6 +15,7 @@
 	$DIR = 'D:\9下载器\阳光漫画盒\download\雅漫社\\';
 
 	function check_time_stamp($timestamp=false){
+
 		if (!$timestamp) return_error();
 
 		$timestamp=round($timestamp/1000);
@@ -22,7 +23,7 @@
 		$diff = abs(time()-$timestamp);
 
 		if ($diff>10) return_error();
-
+		
 		return $diff;
 	}
 
@@ -33,6 +34,6 @@
 	}
 
 	function return_error(){
-		exit('密钥错误');
+		exit('123');
 	}
 ?>

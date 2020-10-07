@@ -9,8 +9,7 @@
 </template>
 
 <script>
-    import ajax from "@/api/serve/ajax";
-    import { get_img } from "@/api/serve/index";
+    import { get_img, ajax } from "@/serve";
 
     export default {
         name: "index",
@@ -100,7 +99,8 @@
                 this.get_chater_length(manga, chater).then(arr => {
                     for (let i = 0, l = arr.length; i < l; i++) {
                         this.get_file(manga, chater, arr[i]).then(blob => {
-                            this.arr[i] = blob;
+                            this.$set(this.arr,i,blob);
+                            // this.arr[i] = blob;
                         });
                     }
                 })
@@ -133,6 +133,8 @@
 
 
             this.reload_page(manga, chater);
+
+            window.arr = this.arr;
         }
     };
 </script>

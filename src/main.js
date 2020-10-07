@@ -1,8 +1,10 @@
 import Vue from "vue";
-import App from "./App.vue";
+import App from "./index.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
+
+import 'reset-css';
 
 // 引入ui组件
 import Vant, {Toast} from 'vant';

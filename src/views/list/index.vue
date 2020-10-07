@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import ajax from "@/api/serve/ajax";
+    import { ajax } from "@/serve";
 
     export default {
         name: "index",
@@ -32,7 +32,7 @@
     };
 </script>
 
-<style scoped type="text/less" lang="less">
+<style scoped lang="less">
     .list {
         display: flex;
         flex-wrap: wrap;
