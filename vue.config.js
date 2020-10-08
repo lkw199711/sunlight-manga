@@ -1,4 +1,5 @@
 const pxtorem = require('postcss-pxtorem');
+const network = 'http://manga.ll2.ink';
 
 module.exports = {
     lintOnSave: false,
@@ -11,7 +12,7 @@ module.exports = {
         // host: '0.0.0.0',
         proxy: {//配置代理
             '/cms': {
-                target: 'http://localhost',
+                target: network,
                 changeOrigin: true,
                 ws: true,
                 pathRewrite: {
@@ -58,6 +59,15 @@ module.exports = {
         'style-resources-loader': {
             preProcessor: 'less',
             patterns: [],
+        }
+    },
+    pwa:{//图标设置
+        iconPaths:{
+            favicon32: 'favicon.ico',
+            favicon16: 'favicon.ico',
+            appleTouchIcon: 'favicon.ico',
+            maskIcon: 'favicon.ico',
+            msTileImage: 'favicon.ico'
         }
     },
 };
