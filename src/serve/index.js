@@ -2,6 +2,12 @@ import Axios from "axios";
 import Qs from "qs";
 import md5 from "js-md5";
 
+// 网络路径
+const network = 'http://manga.ll2.ink';
+// 本地路径
+const localhost = 'http://localhost/';
+// 最后决定使用的路径
+const proxyUrl = network;
 // 接口路径的设置
 const url = process.env.NODE_ENV === 'development' ? '/cms' + "/" : '/';
 
@@ -78,4 +84,4 @@ export default function get_key_word(time) {
     return keyWord;
 }
 
-export { ajax, get_img };
+export { ajax, get_img, proxyUrl };

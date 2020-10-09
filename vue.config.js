@@ -1,5 +1,8 @@
 const pxtorem = require('postcss-pxtorem');
+// 网络路径
 const network = 'http://manga.ll2.ink';
+// 本地路径
+const localhost = 'http://localhost/';
 
 module.exports = {
     lintOnSave: false,

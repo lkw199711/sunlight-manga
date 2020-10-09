@@ -4,10 +4,12 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 
+// 引入公用脚本与样式
 import 'reset-css';
+import './assets/icon/iconfont.css'
 
 // 引入ui组件
-import Vant, {Toast} from 'vant';
+import Vant, { Toast } from 'vant';
 import ElementUI from 'element-ui';
 import Antd from 'ant-design-vue';
 
@@ -22,20 +24,21 @@ Vue.use(Vant);
 Vue.use(ElementUI);
 Vue.use(Antd);
 
+Vue.prototype.$msg = Toast;
 Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount("#app");
 
 // 页面title修改
 router.beforeEach((to, from, next) => {
-  // 路由发生变化修改页面title
-  if (to.meta.title) {
-    document.title = to.meta.title || '阳光漫画';
-    document.documentElement.setAttribute('lang', 'zh');
-  }
-  next()
+    // 路由发生变化修改页面title
+    if (to.meta.title) {
+        document.title = to.meta.title || '阳光漫画';
+        document.documentElement.setAttribute('lang', 'zh');
+    }
+    next()
 })
