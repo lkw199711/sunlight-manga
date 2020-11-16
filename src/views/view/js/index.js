@@ -1,5 +1,5 @@
-import {get_img, ajax} from "@/serve";
-import {window_go_top} from "@/utils";
+import { get_img, ajax } from "@/serve";
+import { window_go_top } from "@/utils";
 
 export default {
     // 组建名
@@ -236,5 +236,8 @@ export default {
 
         // 加载页面
         this.reload_page();
+
+        // 关闭菜单
+        this.reading_state_update(true);
     }
 };
