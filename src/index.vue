@@ -2,7 +2,7 @@
     <div class="index">
         <!--导航栏-->
         <van-nav-bar v-if="!reading" :title="$mark.title" left-text="返回" @click-left="$router.back()" left-arrow
-                     fixed placeholder/>
+                     fixed :placeholder="this.$route.name !== 'view'"/>
         <!--主路由-->
         <router-view class="main"/>
     </div>
