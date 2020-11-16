@@ -1,7 +1,7 @@
 const pxtorem = require('postcss-pxtorem');
 // 网络路径
-const network = 'http://localhost';
-// const network = 'http://manga.tt2.ink';
+// const network = 'http://localhost';
+const network = 'http://manga.tt2.ink';
 // 本地路径
 const localhost = 'http://localhost/';
 

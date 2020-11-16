@@ -1,8 +1,10 @@
-import { get_img, ajax } from "@/serve";
-import { window_go_top } from "@/utils";
+import {get_img, ajax} from "@/serve";
+import {window_go_top} from "@/utils";
 
 export default {
+    // 组建名
     name: "index",
+    // 数据
     data() {
         return {
             // 漫画名
@@ -35,6 +37,7 @@ export default {
             }
         };
     },
+    // 方法
     methods: {
         /**
          * 加载图片
@@ -214,7 +217,13 @@ export default {
         open_popup(name, bool = true) {
             this.popup[name] = bool;
         },
+
+        // 阅读状态控制
+        reading_state_update(bool = true) {
+            this.$store.commit('reading_state_update', bool);
+        },
     },
+    // 生命周期
     created() {
 
         const manga = this.manga = this.get_manga_value('manga');

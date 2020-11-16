@@ -5,7 +5,7 @@
 	#返回文本
 	header('content-type:text/html;charset=UTF-8');
 
-	$DIR = '/data/0serve/manga/雅漫社/';
+	$DIR = '../data/雅漫社/';
 
 	if(!$_POST){
 		$_POST=$_GET;
