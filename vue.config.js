@@ -1,7 +1,7 @@
 const pxtorem = require('postcss-pxtorem');
 // 网络路径
-const network = 'http://localhost';
-// const network = 'http://manga.tt2.ink';
+// const network = 'http://localhost';
+const network = 'http://manga.tt2.ink';
 // 本地路径
 const localhost = 'http://localhost/';
 
@@ -12,7 +12,7 @@ module.exports = {
         open: true,
         // openPage: '#/about',
         hot: true,
-        prox: 8000,
+        // prox: 8000,
         // host: '0.0.0.0',
         proxy: {//配置代理
             '/cms': {

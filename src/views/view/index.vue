@@ -1,5 +1,5 @@
 <template>
-    <div class="view">
+    <div class="view" @touchmove="reading_state_update(true)" @click="reading_state_update(false)">
 
         <!--目录列表-->
         <van-popup v-model="popup.menu" position="left">
