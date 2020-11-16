@@ -21,7 +21,7 @@ export default {
             // 当前图片页码
             page: -1,
             // 初始加载页码数量
-            initPage: 2,
+            initPage: 3,
             // 是否正在加载图片
             loading: false,
             // 是否正在重载页面
