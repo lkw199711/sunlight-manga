@@ -45,6 +45,9 @@ export default {
             const list = this.imgPathList;
             const initPage = this.initPage - 1;
 
+            // 无数据 退出
+            if (!list.length) return false;
+
             // 页码递增
             const page = ++this.page;
 
@@ -96,23 +99,22 @@ export default {
                     // 获取数据
                     const data = r.data;
 
-                    this.imgPathList = data.map(i => {
+                    // 排除非图片数据
+                    const arr = data.map(i => {
                         if (i.match(/\d+/)) return i;
                     })
 
                     // 为图片排序
-                    this.imgPathList.sort((a, b) => {
+                    this.imgPathList = arr.sort((a, b) => {
                         // 获取开头的数字,进行排序
                         const valueA = a.match(/\d+/)[0];
                         const valueB = b.match(/\d+/)[0];
                         return valueA - valueB;
                     });
 
-                    // 排序后的数组
-                    // console.log(this.imgPathList);
-
                     // 开始加载图片
                     this.load_img();
+
                 });
         },
         /**
