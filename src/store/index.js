@@ -11,7 +11,12 @@ export default new Vuex.Store({
     mutations: {
         // 阅读状态控制
         reading_state_update(state, bool = true) {
-            state.reading = bool;
+            if (bool) {
+                state.reading = bool;
+            } else {
+                state.reading = !state.reading;
+            }
+
         },
     },
     actions: {},
