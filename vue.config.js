@@ -12,7 +12,7 @@ module.exports = {
         open: true,
         // openPage: '#/about',
         hot: true,
-        // prox: 8000,
+        prox: 8000,
         // host: '0.0.0.0',
         proxy: {//配置代理
             '/cms': {
