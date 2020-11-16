@@ -26,6 +26,11 @@ Vue.use(ElementUI);
 Vue.use(Antd);
 
 Vue.prototype.$msg = Toast;
+Vue.prototype.$reading = false;
+Vue.prototype.$mark = {
+    title: '阳光漫画',
+    reading: false,
+};
 Vue.config.productionTip = false;
 
 var vue = new Vue({
