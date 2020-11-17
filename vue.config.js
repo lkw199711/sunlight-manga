@@ -9,10 +9,15 @@ module.exports = {
     lintOnSave: false,
     // 开发环境代理
     devServer: {
+        // 开放公网
         open: true,
+        // 初始页面
         // openPage: '#/about',
+        // 不知道
         hot: true,
-        // prox: 8000,
+        // 端口号
+        port: 8000,
+        // 主机
         // host: '0.0.0.0',
         proxy: {//配置代理
             '/cms': {
@@ -26,6 +31,7 @@ module.exports = {
         }
     },
     css: {
+        // posttocss配置
         loaderOptions: {
             postcss: {
                 plugins: [
