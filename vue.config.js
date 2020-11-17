@@ -1,15 +1,11 @@
 const pxtorem = require('postcss-pxtorem');
 // 网络路径
-// const network = 'http://localhost';
 const network = 'http://manga.tt2.ink';
 // 本地路径
 const localhost = 'http://localhost/';
 
+// 路径
 const path = require('path')
-// 根据路径获取文件
-function resolve(dir) {
-    return path.join(__dirname, dir)
-}
 
 module.exports = {
     lintOnSave: false,
@@ -71,22 +67,22 @@ module.exports = {
             }
         }
     },
-    // 配置less的相对路径
-    resolve: {
-        extensions: ['.js', '.vue'],
-        alias: {
-            '@': resolve('./src'),
-        },
-    },
+    /**
+     * 配置less的相对路径
+     * less相对路径不用配置
+     * 直接@import '~@...'就可以使用
+     */
+    // 插件
     pluginOptions: {
         // 为less 配置全局变量，不用每个vue都引入
         'style-resources-loader': {
             preProcessor: 'less',
             patterns: [
-                resolve('./src/styles/mixin.less'),
+                path.resolve(__dirname, './src/styles/public.less'),
             ],
         }
     },
+    // android应用安装
     pwa: {//图标设置
         iconPaths: {
             favicon32: 'favicon.ico',
