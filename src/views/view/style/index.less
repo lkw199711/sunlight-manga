@@ -1,44 +1,42 @@
 .view {
-  user-select: none;
+    user-select: none;
 
-  /deep/ .van-sidebar{
-    overflow-y:visible;
-  }
+    /**
+    van-sidebar点击无响应解决
+     */
 
-  img {
-    display: block;
-    margin: 0 auto;
-    max-width: 100vw;
-  }
+    /deep/ .van-sidebar {
+        overflow-y: visible;
+    }
 
-  .show-menu {
-    position: fixed;
-    top: 18px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    opacity: .6;
-  }
+    img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100vw;
+    }
 
-  .btns {
-    margin: 20px auto;
-    display: flex;
-    justify-content: space-around;
-  }
+    .show-menu {
+        position: fixed;
+        top: 18px;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        opacity: .6;
+    }
 
-  button {
-    width: 100px;
-    line-height: 2;
-    color: #ffffff;
-    border: 0;
-  }
+    .btns {
+        margin: 20px auto;
+        display: flex;
+        justify-content: space-around;
 
-  .before {
-    background-color: #ffc53d;
-  }
+    }
 
-  .next {
-    background-color: #bae637;
-  }
+    .before {
+        background-color: #ffc53d;
+    }
+
+    .next {
+        background-color: #bae637;
+    }
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="menu">
-        <p v-for="(k, i) in arr" :key="i" @click.stop="go_view(k,i)">{{ k }}</p>
+        <p class="item" v-for="(k, i) in arr" :key="i" @click.stop="go_view(k,i)">{{ k }}</p>
     </div>
 </template>
 
