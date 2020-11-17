@@ -58,7 +58,7 @@ module.exports = {
                         // 排除哪些开头的如 .weui-button 等等
                         // 该项仅在使用 Circle 组件时需要
                         // 原因参见 https://github.com/youzan/vant/issues/1948
-                        selectorBlackList: ['van-', 'van-circle__layer', 'icon'],
+                        selectorBlackList: ['nopost', 'van-', 'van-circle__layer', 'icon'],
                         // 最小转换，如低于 4px的不会进行转成rem
                         minPixelValue: 4,
                         // re单位的小数位数上限

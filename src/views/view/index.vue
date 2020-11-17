@@ -23,7 +23,7 @@
             </van-list>
         </van-pull-refresh>
         <!--目录按钮-->
-        <van-button class="show-menu" type="danger" @click="open_popup('menu')">
+        <van-button class="no-post-to-rem-show-menu" type="danger" @click.stop="open_popup('menu')">
             <i class="iconfont icon-mulu"/>
         </van-button>
         <!--翻页按钮-->

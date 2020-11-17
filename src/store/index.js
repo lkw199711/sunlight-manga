@@ -16,7 +16,6 @@ export default new Vuex.Store({
             } else {
                 state.reading = !state.reading;
             }
-
         },
     },
     actions: {},
