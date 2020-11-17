@@ -5,6 +5,12 @@ const network = 'http://manga.tt2.ink';
 // 本地路径
 const localhost = 'http://localhost/';
 
+const path = require('path')
+// 根据路径获取文件
+function resolve(dir) {
+    return path.join(__dirname, dir)
+}
+
 module.exports = {
     lintOnSave: false,
     // 开发环境代理
@@ -16,7 +22,7 @@ module.exports = {
         // 不知道
         hot: true,
         // 端口号
-        port: 8000,
+        port: 8001,
         // 主机
         // host: '0.0.0.0',
         proxy: {//配置代理
@@ -30,6 +36,7 @@ module.exports = {
             }
         }
     },
+    // css配置项
     css: {
         // posttocss配置
         loaderOptions: {
@@ -64,15 +71,24 @@ module.exports = {
             }
         }
     },
+    // 配置less的相对路径
+    resolve: {
+        extensions: ['.js', '.vue'],
+        alias: {
+            '@': resolve('./src'),
+        },
+    },
     pluginOptions: {
         // 为less 配置全局变量，不用每个vue都引入
         'style-resources-loader': {
             preProcessor: 'less',
-            patterns: [],
+            patterns: [
+                resolve('./src/styles/mixin.less'),
+            ],
         }
     },
-    pwa:{//图标设置
-        iconPaths:{
+    pwa: {//图标设置
+        iconPaths: {
             favicon32: 'favicon.ico',
             favicon16: 'favicon.ico',
             appleTouchIcon: 'favicon.ico',
