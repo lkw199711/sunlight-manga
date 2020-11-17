@@ -49,5 +49,3 @@ router.beforeEach((to, from, next) => {
     }
     next()
 })
-
-console.log(vue);
