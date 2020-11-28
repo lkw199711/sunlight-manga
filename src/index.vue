@@ -2,7 +2,7 @@
     <div class="index">
         <!--导航栏-->
         <van-nav-bar v-if="!reading" :title="$mark.title" left-text="返回" @click-left="$router.back()" left-arrow
-                     fixed :placeholder="this.$route.name !== 'view'"/>
+                     fixed :placeholder="placeholder"/>
         <!--主路由-->
         <router-view class="main"/>
     </div>
@@ -20,6 +20,7 @@
         data() {
             return {
                 reading: false,
+                placeholder: true,
             }
         },
         // 组建名
@@ -37,7 +38,7 @@
             get_reading() {
                 // 在浏览页时 触发触控事件
                 return this.$route.name === 'view' && this.$store.state.reading;
-            }
+            },
         },
         // 监听
         watch: {
@@ -48,6 +49,9 @@
                 handler(val) {
                     this.reading = val;
                 }
+            },
+            get_placeholder_state() {
+                this.placeholder = this.$route.name !== 'view';
             }
         },
         // 生命周期

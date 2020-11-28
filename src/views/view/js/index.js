@@ -48,6 +48,9 @@ export default {
             const list = this.imgPathList;
             const initPage = this.initPage - 1;
 
+            // 开启加载状态
+            this.loading = true;
+
             // 无数据 退出
             if (!list.length) return false;
 
