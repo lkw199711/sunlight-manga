@@ -72,6 +72,9 @@ export default {
                 this.finished = this.page === this.imgPathList.length - 1;
                 // 是否完成页面初始化加载,未完成则再次加载图片
                 page < initPage && this.load_img();
+            }).catch(error=>{
+                --this.page;
+                this.load_img();
             });
         },
 
