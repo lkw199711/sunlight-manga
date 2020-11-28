@@ -23,12 +23,13 @@
             </van-list>
         </van-pull-refresh>
         <!--目录按钮-->
-        <van-button class="show-menu" type="danger" @click="open_popup('menu')"><i class="iconfont icon-mulu"></i>
+        <van-button class="nopost-show-menu" type="danger" @click.stop="open_popup('menu')">
+            <i class="iconfont icon-mulu"/>
         </van-button>
         <!--翻页按钮-->
         <div class="btns">
-            <van-button class="" type="warning" @click="before">上一章</van-button>
-            <van-button class="" type="info" @click="next">下一章</van-button>
+            <van-button class="btn" type="warning" @click="before">上一章</van-button>
+            <van-button class="btn" type="info" @click="next">下一章</van-button>
         </div>
 
     </div>

@@ -59,9 +59,6 @@
         }
     }
 </script>
-
 <style scoped type="text/less" lang="less">
-    .main {
-        /*height: 100vh;*/
-    }
+    /*@import "~@/style/document";*/
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <p v-for="(k, i) in arr" :key="i" @click.stop="go_menu(k)">{{ k }}</p>
+        <p class="item" v-for="(k, i) in arr" :key="i" @click.stop="go_menu(k)">{{ k }}</p>
     </div>
 </template>
 
@@ -33,15 +33,10 @@
 </script>
 
 <style scoped lang="less">
+    @import '~@/style/menu-item';
+
     .list {
         display: flex;
         flex-wrap: wrap;
-
-        p {
-            margin: 10px 10px;
-            padding: 10px;
-            width: 300px;
-            border: 1px solid #2c3e50;
-        }
     }
 </style>

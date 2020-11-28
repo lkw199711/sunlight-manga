@@ -14,6 +14,7 @@ import ElementUI from 'element-ui';
 import Antd from 'ant-design-vue';
 
 // 引入组件css
+import 'reset-css';
 import 'vant/lib/index.css';
 import 'vant/lib/icon/local.css';
 import 'element-ui/lib/theme-chalk/index.css';
