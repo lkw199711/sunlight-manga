@@ -33,5 +33,5 @@ jobs:
               cp -r ./php /www/wwwroot/manga.ll2.ink ;
           "
 
-        - name: delete ssh key # 删除 ssh key
-          run: rm -rf ~/.ssh/id_rsa
+      - name: delete ssh key # 删除 ssh key
+        run: rm -rf ~/.ssh/id_rsa
